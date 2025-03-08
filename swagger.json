@@ -821,6 +821,150 @@
                 }
             }
         },
+        "/marketplace": {
+            "get": {
+                "description": "List Shares Placed On Sale",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "MarketPlace"
+                ],
+                "summary": "List Shares Placed On Sale",
+                "parameters": [
+                    {
+                        "description": "List Sale Shares Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.ListSaleSharesRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.ListSaleSharesResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/marketplace/buy": {
+            "post": {
+                "description": "Buy Shares Request",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "MarketPlace"
+                ],
+                "summary": "Buy Shares Request",
+                "parameters": [
+                    {
+                        "description": "Buy Shares Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.BuySharesRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.BuySharesResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Share Placement Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/marketplace/sell": {
+            "post": {
+                "description": "Place Shares On Sale",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "MarketPlace"
+                ],
+                "summary": "Place Shares On Sale",
+                "parameters": [
+                    {
+                        "description": "Place Shares On Sale Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.PlaceSaleRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.PlaceSaleResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/message": {
             "post": {
                 "description": "Send Message To Multiple Users In One Go",
@@ -1246,6 +1390,28 @@
                     "type": "number"
                 },
                 "total_shares": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.BuySharesRequest": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.BuySharesResponse": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "quantity": {
                     "type": "integer"
                 }
             }
@@ -1859,6 +2025,20 @@
         "model.InitiatePasswordResetResponse": {
             "type": "object"
         },
+        "model.ListSaleSharesRequest": {
+            "type": "object"
+        },
+        "model.ListSaleSharesResponse": {
+            "type": "object",
+            "properties": {
+                "shares": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.SaleShares"
+                    }
+                }
+            }
+        },
         "model.LoggedInUser": {
             "type": "object",
             "properties": {
@@ -1937,6 +2117,20 @@
                 }
             }
         },
+        "model.PlaceSaleRequest": {
+            "type": "object",
+            "properties": {
+                "quantity": {
+                    "type": "integer"
+                },
+                "unit_price": {
+                    "type": "number"
+                }
+            }
+        },
+        "model.PlaceSaleResponse": {
+            "type": "object"
+        },
         "model.ResetPasswordRequest": {
             "type": "object",
             "properties": {
@@ -1970,6 +2164,20 @@
         },
         "model.ReviewAmbassadorApplicationResponse": {
             "type": "object"
+        },
+        "model.SaleShares": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "quantity": {
+                    "type": "integer"
+                },
+                "unit_price": {
+                    "type": "number"
+                }
+            }
         },
         "model.SendMessageRequest": {
             "type": "object",
