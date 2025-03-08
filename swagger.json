@@ -1,0 +1,2062 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API  Documentation for the Daya Digital Amabassador Program Backend",
+        "title": "Daya Digital Ambassadors API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:9090",
+    "basePath": "/api",
+    "paths": {
+        "/ambassador/:id": {
+            "get": {
+                "description": "Get Ambassador Earnings",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ambassador"
+                ],
+                "summary": "Get Ambassador Earnings",
+                "parameters": [
+                    {
+                        "description": "Get Ambassador Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetAmbassadorRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetAmbassadorResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Ambassador Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/ambassador/:id/referral-code": {
+            "get": {
+                "description": "Get Ambassador Unique Referral Code",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ambassador"
+                ],
+                "summary": "Get Ambassador Referral Code",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/ambassador/:id/referrals": {
+            "get": {
+                "description": "Get Users An Ambassador Referred To The System",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ambassador"
+                ],
+                "summary": "Get Ambassador Referrals",
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetUsersResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/ambassador/application": {
+            "post": {
+                "description": "Creates Ambassador Application for a particular company",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ambassador Application"
+                ],
+                "summary": "Create Ambassador Application",
+                "parameters": [
+                    {
+                        "description": "Create Ambassador Application Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateAmbassadorApplicationRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateAmbassadorApplicationResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/ambassador/application/:id": {
+            "get": {
+                "description": "Get Ambassador Application by Application ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ambassador Application"
+                ],
+                "summary": "Get Ambassador Application",
+                "parameters": [
+                    {
+                        "description": "Get Ambassador Application Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetAmbassadorApplicationRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetAmbassadorApplicationResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "description": "Update Ambassador Application by Application ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ambassador Application"
+                ],
+                "summary": "Update Ambassador Application",
+                "parameters": [
+                    {
+                        "description": "Update Ambassador Application Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.ReviewAmbassadorApplicationRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.ReviewAmbassadorApplicationResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/ambassador/applications": {
+            "get": {
+                "description": "Paginated List of Ambassador Applications",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ambassador Application"
+                ],
+                "summary": "List Ambassador Applications",
+                "parameters": [
+                    {
+                        "description": "List Ambassador Applications Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetAmbassadorApplicationsRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetAmbassadorApplicationsResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/ambassadors": {
+            "get": {
+                "description": "Paginated List of Client's Ambassadors",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ambassador"
+                ],
+                "summary": "List Ambassadors",
+                "parameters": [
+                    {
+                        "description": "List Ambassadors Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetAmbassadorsRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetAmbassadorsResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/ambassadors/leaderboard": {
+            "get": {
+                "description": "Get Ambassadors Leaderboard",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ambassador"
+                ],
+                "summary": "Get Ambassadors Leaderboard",
+                "parameters": [
+                    {
+                        "description": "Get Ambassadors Leaderboard Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetAmbassadorsRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetAmbassadorsResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Ambassador Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/client": {
+            "post": {
+                "description": "Create Client and Client Super User",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Create Client",
+                "parameters": [
+                    {
+                        "description": "Create Client Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateCompanyRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateCompanyResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/client/:id/videos": {
+            "get": {
+                "description": "Get Client Videos",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Get Client Videos",
+                "parameters": [
+                    {
+                        "description": "Get Client Videos Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetCompanyVideosRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetCompanyVideosResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Company Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/client/shares": {
+            "patch": {
+                "description": "Create A Request To Update Company Shares (Quantity and Price)",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Create Update Shares Request",
+                "parameters": [
+                    {
+                        "description": "Create Update Shares Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateUpdateSharePriceRequestRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.CreateUpdateSharePriceRequestResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Company Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/client/shares/:id": {
+            "patch": {
+                "description": "Approve or Deny Shares Update Request",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Update Status for Shares Update Request",
+                "parameters": [
+                    {
+                        "description": "Update Shares Request Status Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.UpdateShareRequestStatusRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.UpdateShareRequestStatusResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Share Info Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/clients": {
+            "get": {
+                "description": "Paginated List of Clients",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Client"
+                ],
+                "summary": "List Clients",
+                "parameters": [
+                    {
+                        "description": "List Clients Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetCompaniesRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetCompaniesResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/clients/:action": {
+            "patch": {
+                "description": "Update Client Status (suspend, activate)",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Update Clients Status",
+                "parameters": [
+                    {
+                        "description": "Update Clients Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.UpdateCompaniesStatusRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.UpdateCompaniesStatusResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/company/:id": {
+            "get": {
+                "description": "Get Client (Company Information)",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Get Client (Company)",
+                "parameters": [
+                    {
+                        "description": "Get Company Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetCompanyRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetCompanyResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "description": "Authenticates user and returns a token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Authenticaion"
+                ],
+                "summary": "User Login",
+                "parameters": [
+                    {
+                        "description": "Login request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.LoginRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull Login",
+                        "schema": {
+                            "$ref": "#/definitions/model.LoginResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Invalid Credentials",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/message": {
+            "post": {
+                "description": "Send Message To Multiple Users In One Go",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Messaging"
+                ],
+                "summary": "Send Bulk Message",
+                "parameters": [
+                    {
+                        "description": "Send Bulk Message Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.SendMessageRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.SendMessageResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/messages": {
+            "get": {
+                "description": "Get User Messages",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Messaging"
+                ],
+                "summary": "Get User Messages",
+                "parameters": [
+                    {
+                        "description": "Get Messages Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetMessagesRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetMessagesResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/password-request": {
+            "post": {
+                "description": "Starts the process resetting user password",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Authenticaion"
+                ],
+                "summary": "Initiate Password Reset",
+                "parameters": [
+                    {
+                        "description": "Initiae password reset request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.InitiatePasswordResetRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.InitiatePasswordResetResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "User Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/ping": {
+            "get": {
+                "description": "Check if the server is running",
+                "tags": [
+                    "Health"
+                ],
+                "summary": "Ping the server",
+                "responses": {
+                    "200": {
+                        "description": "pong",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/reset-password": {
+            "patch": {
+                "description": "Resets user password",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Authenticaion"
+                ],
+                "summary": "Reset User Password",
+                "parameters": [
+                    {
+                        "description": "Reset password request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.ResetPasswordRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.ResetPasswordResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request - Possible reasons:",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "User Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/venture-program": {
+            "post": {
+                "description": "Get Venture Program Information By ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Venture Share Program"
+                ],
+                "summary": "Get Venture Program",
+                "parameters": [
+                    {
+                        "description": "Get Program Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetProgramRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetProgramResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Program Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/venture-programs": {
+            "get": {
+                "description": "Paginated List of Client's Venture Programs",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Venture Share Program"
+                ],
+                "summary": "List Venture Program",
+                "parameters": [
+                    {
+                        "description": "Get Programs Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.GetProgramsRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetProgramsResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/verify-password-reset-otp": {
+            "post": {
+                "description": "Verifies provided user password reset OTP",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Authenticaion"
+                ],
+                "summary": "Verify OTP",
+                "parameters": [
+                    {
+                        "description": "Verify Password Reset OTP request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.VerifyPasswordResetOTPRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull",
+                        "schema": {
+                            "$ref": "#/definitions/model.VerifyPasswordResetOTPResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "OTP Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.Ambassador": {
+            "type": "object",
+            "properties": {
+                "analytics": {
+                    "$ref": "#/definitions/model.AmbassadorAnalytics"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "email_address": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "phone_number": {
+                    "type": "string"
+                },
+                "photo": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.AmbassadorAnalytics": {
+            "type": "object",
+            "properties": {
+                "active_users": {
+                    "type": "integer"
+                },
+                "conversion_rate": {
+                    "type": "number"
+                },
+                "last_month_active_users": {
+                    "type": "integer"
+                },
+                "last_month_cash": {
+                    "type": "number"
+                },
+                "last_month_ranking": {
+                    "type": "integer"
+                },
+                "last_month_shares": {
+                    "type": "integer"
+                },
+                "last_month_signups": {
+                    "type": "integer"
+                },
+                "ranking": {
+                    "type": "integer"
+                },
+                "signups": {
+                    "type": "integer"
+                },
+                "total_cash": {
+                    "type": "number"
+                },
+                "total_shares": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.Company": {
+            "type": "object",
+            "properties": {
+                "admin_name": {
+                    "type": "string"
+                },
+                "email_address": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.CompanyVideoResponse": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.CreateAmbassadorApplicationRequest": {
+            "type": "object",
+            "properties": {
+                "company_id": {
+                    "type": "integer"
+                },
+                "country_id": {
+                    "type": "integer"
+                },
+                "email_address": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "followers_range": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "phone_number": {
+                    "type": "string"
+                },
+                "referral_code": {
+                    "type": "string"
+                },
+                "social_media": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "venture_program_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.CreateAmbassadorApplicationResponse": {
+            "type": "object",
+            "properties": {
+                "application_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.CreateCompanyRequest": {
+            "type": "object",
+            "required": [
+                "admin_email",
+                "admin_name",
+                "category_id",
+                "city",
+                "description",
+                "email",
+                "name",
+                "reg_no",
+                "share_quantity",
+                "share_value",
+                "state_id"
+            ],
+            "properties": {
+                "admin_email": {
+                    "type": "string"
+                },
+                "admin_name": {
+                    "type": "string"
+                },
+                "admin_phone": {
+                    "type": "string"
+                },
+                "category_id": {
+                    "type": "integer"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "reg_no": {
+                    "type": "string"
+                },
+                "share_quantity": {
+                    "type": "integer"
+                },
+                "share_value": {
+                    "type": "number"
+                },
+                "state_id": {
+                    "type": "integer"
+                },
+                "videos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.CreateVideoRequest"
+                    }
+                }
+            }
+        },
+        "model.CreateCompanyResponse": {
+            "type": "object",
+            "properties": {
+                "company_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.CreateDeleteProgramRequestRequest": {
+            "type": "object",
+            "properties": {
+                "program_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.CreateDeleteProgramRequestResponse": {
+            "type": "object",
+            "properties": {
+                "request_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.CreateUpdateSharePriceRequestRequest": {
+            "type": "object",
+            "properties": {
+                "new_price": {
+                    "type": "number"
+                },
+                "new_quantity": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.CreateUpdateSharePriceRequestResponse": {
+            "type": "object",
+            "properties": {
+                "request_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.CreateVentureProgramRequest": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "end_date": {
+                    "type": "string"
+                },
+                "rewards": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.CreateVentureProgramRewardRequest"
+                    }
+                },
+                "start_date": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "total_shares": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.CreateVentureProgramResponse": {
+            "type": "object",
+            "properties": {
+                "program_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.CreateVentureProgramRewardRequest": {
+            "type": "object",
+            "properties": {
+                "program_id": {
+                    "type": "integer"
+                },
+                "reward_name": {
+                    "type": "string"
+                },
+                "reward_value": {
+                    "type": "number"
+                }
+            }
+        },
+        "model.CreateVideoRequest": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "error_code": {
+                    "type": "integer"
+                },
+                "message": {},
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "model.GetAmbassadorApplicationRequest": {
+            "type": "object",
+            "properties": {
+                "application_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.GetAmbassadorApplicationResponse": {
+            "type": "object",
+            "properties": {
+                "company_id": {
+                    "type": "integer"
+                },
+                "country_id": {
+                    "type": "integer"
+                },
+                "email_address": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "followers_range": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "phone_number": {
+                    "type": "string"
+                },
+                "referral_code": {
+                    "type": "string"
+                },
+                "social_media": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "model.GetAmbassadorApplicationsRequest": {
+            "type": "object",
+            "properties": {
+                "company_id": {
+                    "type": "integer"
+                },
+                "num_per_page": {
+                    "type": "integer"
+                },
+                "page": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetAmbassadorApplicationsResponse": {
+            "type": "object",
+            "properties": {
+                "applications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.GetAmbassadorApplicationResponse"
+                    }
+                }
+            }
+        },
+        "model.GetAmbassadorRequest": {
+            "type": "object",
+            "properties": {
+                "ambassador_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.GetAmbassadorResponse": {
+            "type": "object",
+            "properties": {
+                "ambassador": {
+                    "$ref": "#/definitions/model.Ambassador"
+                }
+            }
+        },
+        "model.GetAmbassadorsRequest": {
+            "type": "object",
+            "properties": {
+                "company_id": {
+                    "type": "integer"
+                },
+                "num_per_page": {
+                    "type": "integer"
+                },
+                "page": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetAmbassadorsResponse": {
+            "type": "object",
+            "properties": {
+                "ambassadors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Ambassador"
+                    }
+                }
+            }
+        },
+        "model.GetCompaniesRequest": {
+            "type": "object",
+            "properties": {
+                "company_email": {
+                    "type": "string"
+                },
+                "company_name": {
+                    "type": "string"
+                },
+                "num_per_page": {
+                    "type": "integer"
+                },
+                "page": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetCompaniesResponse": {
+            "type": "object",
+            "properties": {
+                "companies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Company"
+                    }
+                }
+            }
+        },
+        "model.GetCompanyRequest": {
+            "type": "object",
+            "properties": {
+                "company_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.GetCompanyResponse": {
+            "type": "object",
+            "properties": {
+                "admins": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.GetUserResponse"
+                    }
+                },
+                "allocated_shares": {
+                    "type": "integer"
+                },
+                "ambassadors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.GetUserResponse"
+                    }
+                },
+                "cash_earnings": {
+                    "type": "number"
+                },
+                "company_email": {
+                    "type": "string"
+                },
+                "company_id": {
+                    "type": "integer"
+                },
+                "company_name": {
+                    "type": "string"
+                },
+                "conversion_rate": {
+                    "type": "number"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "total_active_users": {
+                    "type": "integer"
+                },
+                "total_last_month_signups": {
+                    "type": "integer"
+                },
+                "total_shares": {
+                    "type": "integer"
+                },
+                "total_signups": {
+                    "type": "integer"
+                },
+                "videos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.CompanyVideoResponse"
+                    }
+                }
+            }
+        },
+        "model.GetCompanyVideosRequest": {
+            "type": "object",
+            "properties": {
+                "company_id": {
+                    "type": "integer"
+                },
+                "num_per_page": {
+                    "type": "integer"
+                },
+                "page": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.GetCompanyVideosResponse": {
+            "type": "object",
+            "properties": {
+                "videos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.CompanyVideoResponse"
+                    }
+                }
+            }
+        },
+        "model.GetMessagesRequest": {
+            "type": "object",
+            "properties": {
+                "num_per_page": {
+                    "type": "integer"
+                },
+                "page": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.GetMessagesResponse": {
+            "type": "object",
+            "properties": {
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Message"
+                    }
+                }
+            }
+        },
+        "model.GetProgramRequest": {
+            "type": "object",
+            "properties": {
+                "program_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.GetProgramResponse": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "end_time": {
+                    "type": "string"
+                },
+                "program_id": {
+                    "type": "integer"
+                },
+                "start_time": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "total_shares": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.GetProgramsRequest": {
+            "type": "object",
+            "properties": {
+                "company_id": {
+                    "type": "integer"
+                },
+                "num_per_page": {
+                    "type": "integer"
+                },
+                "page": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.GetProgramsResponse": {
+            "type": "object",
+            "properties": {
+                "programs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.GetProgramResponse"
+                    }
+                }
+            }
+        },
+        "model.GetUserResponse": {
+            "type": "object",
+            "properties": {
+                "user": {
+                    "$ref": "#/definitions/model.LoggedInUser"
+                }
+            }
+        },
+        "model.GetUsersResponse": {
+            "type": "object",
+            "properties": {
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.LoggedInUser"
+                    }
+                }
+            }
+        },
+        "model.InitiatePasswordResetRequest": {
+            "type": "object",
+            "properties": {
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.InitiatePasswordResetResponse": {
+            "type": "object"
+        },
+        "model.LoggedInUser": {
+            "type": "object",
+            "properties": {
+                "companyID": {
+                    "type": "integer"
+                },
+                "companyRole": {
+                    "type": "string"
+                },
+                "emailAddress": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "isSuperUser": {
+                    "type": "boolean"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "phoneNumber": {
+                    "type": "string"
+                },
+                "profilePhoto": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.LoginRequest": {
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ],
+            "properties": {
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.LoginResponse": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "$ref": "#/definitions/token.Token"
+                },
+                "refresh_token": {
+                    "$ref": "#/definitions/token.Token"
+                },
+                "user_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.Message": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "sender": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.ResetPasswordRequest": {
+            "type": "object",
+            "properties": {
+                "confirm_password": {
+                    "type": "string"
+                },
+                "otp": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.ResetPasswordResponse": {
+            "type": "object"
+        },
+        "model.ReviewAmbassadorApplicationRequest": {
+            "type": "object",
+            "properties": {
+                "application_id": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.ReviewAmbassadorApplicationResponse": {
+            "type": "object"
+        },
+        "model.SendMessageRequest": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                },
+                "recipients": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.SendMessageResponse": {
+            "type": "object"
+        },
+        "model.UpdateCompaniesStatusRequest": {
+            "type": "object",
+            "properties": {
+                "company_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        "model.UpdateCompaniesStatusResponse": {
+            "type": "object"
+        },
+        "model.UpdateDeleteProgramRequestRequest": {
+            "type": "object",
+            "properties": {
+                "request_id": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.UpdateDeleteProgramRequestResponse": {
+            "type": "object"
+        },
+        "model.UpdateShareRequestStatusRequest": {
+            "type": "object",
+            "properties": {
+                "request_id": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.UpdateShareRequestStatusResponse": {
+            "type": "object"
+        },
+        "model.VerifyPasswordResetOTPRequest": {
+            "type": "object",
+            "properties": {
+                "otp": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.VerifyPasswordResetOTPResponse": {
+            "type": "object"
+        },
+        "token.Token": {
+            "type": "object",
+            "properties": {
+                "expires_at": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
